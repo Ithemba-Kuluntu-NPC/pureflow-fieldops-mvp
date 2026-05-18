@@ -114,3 +114,31 @@ Evidence records include evidence ID, title, linked source record, type, verific
 ## Upload_History and Upload_Errors
 
 Bulk upload records should track rows uploaded, accepted, flagged, rejected, duplicate warnings, missing field warnings, validation status, uploader, upload time, target tab, and commit status.
+
+## Simplified operating-system concepts
+
+The current UI groups the mock data model into five primary areas: Overview, Rollouts, Monitoring, Evidence, and Reports. The model remains programme-wide while the active phase is contextual.
+
+### Programme and project/phase
+
+Programme records describe the overall PureFlow Amanzi Safe Water & Community Resilience Programme. Project/phase records describe active and future rollout phases. The active phase, Foundational Rollout: Port St Johns + Ngquza Hill, is treated as the current operating context, not as the whole programme.
+
+### Geography and rollout cohorts
+
+Geography records should support province/region, municipality, ward, village, and community/village cluster rollups. Rollout cohorts or cluster cards are a UI-level simplification over events and geographies so teams can manage rural event pipelines without relying on large target-progress visuals.
+
+### Monitoring status
+
+Monitoring combines household sample assignments, fieldworker survey status, site follow-up status, issue escalation status, water-test status, paper forms awaiting capture, and supervisor QA status. Household follow-up remains sample-based; school/ECD sites are fixed institutional records that can receive fuller monitoring.
+
+### Fieldworker survey and paper capture
+
+Fieldworker survey records should support grouped mobile capture: Visit details, Filter use, Correct use, Boiling and water source, Issues, and Evidence. Paper capture records should include batch ID, captured by, original fieldworker, linked household/site, rows captured, rows flagged, rows accepted, validation status, and scan/photo reference.
+
+### Evidence and report packs
+
+Evidence records move through a simple verification pipeline: Captured, Reviewed, Verified, Report-ready. Report pack records should reference programme, project/phase, geography, reporting period, KPI snapshot, narrative sections, issue-resolution summary, evidence summary, selected impact story, export status, and audit pack references.
+
+### Target framing
+
+Targets remain in the model for planning, phase detail, reports, and future backend records, but the main Overview UI does not use programme-scale or selected-phase targets as dominant KPIs or large progress bars.

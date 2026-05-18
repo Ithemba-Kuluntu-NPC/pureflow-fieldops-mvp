@@ -97,3 +97,15 @@ No authentication is included in the v1 MVP.
 4. Add Apps Script endpoints with stable JSON responses.
 5. Replace page imports from mock arrays with calls to the data access module.
 6. Add Google Workspace auth only after the data flows are confirmed.
+
+## Simplified MVP alignment
+
+The simplified MVP keeps Google Workspace as the future lightweight backend direction while remaining mock-only now. The five primary areas map to future Workspace data as follows:
+
+- **Overview:** read-only aggregates from Programmes, Projects_Phases, Events, Households, Schools_ECDs, Household_Followups, Issues, Water_Tests, Upload_History, and Reports.
+- **Rollouts:** Events, Households, Schools_ECDs, Geographies, Upload_History, and Upload_Errors.
+- **Monitoring:** Household_Followups, Site_Followups, Issues, Water_Tests, paper capture batches, and future Users assignments.
+- **Evidence:** Drive folder references, evidence metadata, Upload_History, Upload_Errors, audit pack indexes, and report-ready status.
+- **Reports:** Reports tab rows, monthly narrative snapshots, evidence summary, issue resolution summary, and generated report pack references.
+
+CSV/Excel upload should be a first-class Apps Script workflow for household event rosters, paper follow-up forms, school/ECD site data, issue/replacement logs, and water testing logs. Future user/account controls should support admins, operations managers, supervisors, fieldworkers, data capturers, and read-only funder users, but no authentication is included in this MVP.

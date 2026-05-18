@@ -16,8 +16,12 @@ const badgeTone: Record<string, string> = {
   Open: "bg-amber-100 text-amber-900 ring-1 ring-amber-200",
   Review: "bg-amber-100 text-amber-900 ring-1 ring-amber-200",
   "Awaiting review": "bg-amber-100 text-amber-900 ring-1 ring-amber-200",
+  "Validation review": "bg-amber-100 text-amber-900 ring-1 ring-amber-200",
   "In progress": "bg-cyan-100 text-cyan-800 ring-1 ring-cyan-200",
+  "On track": "bg-cyan-100 text-cyan-800 ring-1 ring-cyan-200",
+  Upcoming: "bg-slate-100 text-slate-700 ring-1 ring-slate-200",
   "Not started": "bg-slate-100 text-slate-700 ring-1 ring-slate-200",
+  "Needs attention": "bg-amber-100 text-amber-900 ring-1 ring-amber-200",
   "Needs revisit": "bg-amber-100 text-amber-900 ring-1 ring-amber-200",
   Unreachable: "bg-rose-100 text-rose-800 ring-1 ring-rose-200",
   Refused: "bg-rose-100 text-rose-800 ring-1 ring-rose-200",
@@ -31,44 +35,38 @@ const badgeTone: Record<string, string> = {
 };
 
 const nav = [
-  ["/", "Dashboard"],
-  ["/programme", "Programme Overview"],
-  ["/projects", "Projects & Phases"],
-  ["/events", "Rollout Events"],
-  ["/households", "Households"],
-  ["/uploads", "Bulk Upload Hub"],
-  ["/sampling", "Household Sampling"],
-  ["/fieldworker-surveys", "Fieldworker Surveys"],
-  ["/schools", "Schools & ECDs"],
-  ["/follow-ups", "Follow-ups"],
-  ["/issues", "Issues"],
-  ["/water-testing", "Water Testing"],
-  ["/funder", "Funder Portal"],
-  ["/workspace-plan", "Workspace Plan"]
+  ["/", "Overview"],
+  ["/rollouts", "Rollouts"],
+  ["/monitoring", "Monitoring"],
+  ["/evidence", "Evidence"],
+  ["/reports", "Reports"]
 ];
 
 export function Shell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  return <div className="min-h-screen">
-    <aside className="fixed hidden h-screen w-72 overflow-y-auto bg-water-950 p-5 text-white shadow-2xl lg:block">
+  return <div className="min-h-screen bg-[#F5F7F8] text-[#163040]">
+    <aside className="fixed hidden h-screen w-72 overflow-y-auto border-r border-white/10 bg-[#0A3550] p-5 text-white shadow-2xl lg:block">
       <div className="rounded-[1.75rem] border border-white/10 bg-white/8 p-5 shadow-soft backdrop-blur">
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-mint-100">PureFlow Amanzi</p>
         <h1 className="mt-3 text-2xl font-black leading-tight">Verified Impact System</h1>
-        <p className="mt-3 text-sm leading-6 text-sky-100">Programme-wide safe water operations, evidence, and reporting.</p>
+        <p className="mt-3 text-sm leading-6 text-sky-100">A calm programme-wide operating system for rollout, monitoring, evidence, and funder reporting.</p>
       </div>
-      <nav className="mt-6 space-y-1 pb-8" aria-label="Primary navigation">
+      <nav className="mt-6 space-y-2 pb-8" aria-label="Primary navigation">
         {nav.map(([href, label]) => {
           const active = href === "/" ? pathname === href : pathname.startsWith(href);
           return <Link key={href} href={href} className={`block rounded-2xl px-4 py-3 text-sm font-bold transition focus:outline-none focus:ring-2 focus:ring-mint-200 ${active ? "bg-white text-water-950 shadow-soft" : "text-sky-50/85 hover:bg-white/10 hover:text-white"}`}>{label}</Link>;
         })}
       </nav>
+      <div className="rounded-3xl border border-white/10 bg-white/8 p-4 text-sm leading-6 text-sky-100">
+        Built for future multi-phase expansion. Current active phase is context, not the whole programme.
+      </div>
     </aside>
     <main className="lg:pl-72">
-      <div className="mx-auto max-w-[1500px] px-4 py-5 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1380px] px-4 py-5 sm:px-6 lg:px-8">
         <div className="mb-5 rounded-[1.75rem] border border-slate-200 bg-white p-4 shadow-soft lg:hidden">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-water-700">PureFlow Amanzi</p>
           <h1 className="text-xl font-black text-water-950">Verified Impact System</h1>
-          <div className="mt-3 flex gap-2 overflow-x-auto pb-1">{nav.map(([href, label]) => <Link key={href} href={href} className="whitespace-nowrap rounded-full bg-slate-100 px-3 py-2 text-xs font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-water-500">{label}</Link>)}</div>
+          <div className="mt-3 flex gap-2 overflow-x-auto pb-1">{nav.map(([href, label]) => <Link key={href} href={href} className={`whitespace-nowrap rounded-full px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-water-500 ${pathname === href || (href !== "/" && pathname.startsWith(href)) ? "bg-water-950 text-white" : "bg-slate-100 text-slate-700"}`}>{label}</Link>)}</div>
         </div>
         {children}
       </div>
@@ -77,7 +75,7 @@ export function Shell({ children }: { children: ReactNode }) {
 }
 
 export function PageHeader({ eyebrow, title, children, actions }: { eyebrow: string; title: string; children?: ReactNode; actions?: ReactNode }) {
-  return <div className="mb-6 overflow-hidden rounded-[2rem] border border-white/70 bg-gradient-to-br from-water-950 via-water-900 to-teal-700 p-7 text-white shadow-soft">
+  return <div className="mb-6 overflow-hidden rounded-[2rem] border border-white/80 bg-gradient-to-br from-water-950 via-[#0A4B63] to-teal-700 p-7 text-white shadow-soft">
     <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
       <div>
         <p className="text-xs font-black uppercase tracking-[0.28em] text-mint-100">{eyebrow}</p>
@@ -130,7 +128,7 @@ export function SectionTitle({ eyebrow, title, children }: { eyebrow?: string; t
 
 export function InsightPanel({ title, items }: { title: string; items: string[] }) {
   return <Card className="border-teal-100 bg-gradient-to-br from-mint-50 to-white">
-    <p className="text-xs font-black uppercase tracking-[0.22em] text-teal-700">Current signal</p>
+    <p className="text-xs font-black uppercase tracking-[0.22em] text-teal-700">Current Signal</p>
     <h3 className="mt-2 text-2xl font-black text-water-950">{title}</h3>
     <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-700">{items.map((item) => <li key={item} className="flex gap-3"><span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-teal-600" />{item}</li>)}</ul>
   </Card>;

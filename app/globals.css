@@ -3,24 +3,28 @@
 @tailwind utilities;
 
 :root {
-  --background: #f5f8fb;
-  --foreground: #102a43;
+  --background: #f5f7f8;
+  --foreground: #163040;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: radial-gradient(circle at top left, rgba(14, 165, 233, 0.16), transparent 28rem), var(--background);
+  background:
+    radial-gradient(circle at top left, rgba(31, 167, 160, 0.15), transparent 28rem),
+    linear-gradient(180deg, #eaf7f6 0%, #f5f7f8 36rem),
+    var(--background);
   color: var(--foreground);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
-.card-gradient {
-  background: linear-gradient(135deg, #08344f 0%, #075985 48%, #0f766e 100%);
+button, select, input, textarea, a { transition: all 160ms ease; }
+button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible {
+  outline: 3px solid rgba(31, 167, 160, 0.45);
+  outline-offset: 2px;
 }
 
-.table-wrap {
-  overflow-x: auto;
-}
+.table-wrap { overflow-x: auto; }

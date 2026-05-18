@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f5f8fb;
+  --foreground: #102a43;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, rgba(14, 165, 233, 0.16), transparent 28rem), var(--background);
+  color: var(--foreground);
+}
+
+.card-gradient {
+  background: linear-gradient(135deg, #08344f 0%, #075985 48%, #0f766e 100%);
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
